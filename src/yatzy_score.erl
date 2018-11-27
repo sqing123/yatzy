@@ -24,20 +24,11 @@ calc(three_of_a_kind, Roll) ->
 calc(four_of_a_kind, Roll) -> 
 	four_of_a_kind(lists:sort(Roll));
 calc(small_straight, Roll) -> 
-	case lists:sort(Roll) of
- 		[1,2,3,4,5] -> 15;
- 		_ -> 0
- 	end;
+	small_straight(lists:sort(Roll));
 calc(large_straight, Roll) -> 
- 	case lists:sort(Roll) of
- 		[2,3,4,5,6] -> 20;
- 		_ -> 0
- 	end;
+ 	large_straight(lists:sort(Roll));
 calc(yatzy, Roll) -> 
-	case lists:sort(Roll) of
- 		[X, X, X, X, X] -> 50;
- 		_ -> 0
- 	end;
+	yatzy(Roll);
 calc(full_house, Roll) -> 
 	full_house(lists:sort(Roll));
 calc(chance, Roll) -> 
@@ -45,6 +36,21 @@ calc(chance, Roll) ->
 
 uppers(Y, Roll) -> 
 	lists:sum(lists:filter(fun(X) -> X =:= Y end, Roll)).
+
+yatzy([X,X,X,X,X]) ->
+	50;
+yatzy(_) ->
+	0.
+
+small_straight([1,2,3,4,5]) ->
+	15;
+small_straight(_) ->
+	0.
+
+large_straight([2,3,4,5,6]) ->
+	20;
+large_straight(_) -> 
+	0.
 
 full_house([X,X,X,Y,Y]) when X/=Y ->
 	3*X + 2*Y;
