@@ -45,8 +45,10 @@ upper_total(Sheet) ->
 
 bonus(Sheet) ->
 	case upper_total(Sheet) of
-		Upper when Upper>=63 -> 50;
-		_ -> 0
+		Upper when Upper>=63 -> 
+			50;
+		_ -> 
+			0
 	end.
 
 lower_total(Sheet) ->
