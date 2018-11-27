@@ -52,7 +52,7 @@ bonus(Sheet) ->
 lower_total(Sheet) ->
 	Targets = [one_pair, two_pairs, three_of_a_kind,
 			four_of_a_kind, small_straight, large_straight,
-			full_house, yatzy,chance],
+			full_house, yatzy, chance],
 	calc_total(Targets, Sheet).
 
 total(Sheet) ->
@@ -60,7 +60,7 @@ total(Sheet) ->
 
 calc_total(Targets, Sheet) ->
 	Sheet2 = maps:with(Targets, Sheet),
-	lists:sum(maps:values(Sheet)).
+	lists:sum(maps:values(Sheet2)).
 
 check_filled(Slot, Sheet) ->
 	Value = maps:get(Slot, Sheet, empty),
