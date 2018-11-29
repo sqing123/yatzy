@@ -100,7 +100,7 @@ new_roll(Roll, Keep) ->
 		[] ->
 			Rolls = 5 - length(Keep),
 			New = [ rand:uniform(6) || _ <- lists:seq(1,Rolls)],
-			NewRoll = lists:merge(lists:sort(New), Keep),
+			NewRoll = New ++ Keep,
 			{ok, NewRoll};
 		_ ->
 			invalid_keepers

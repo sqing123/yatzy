@@ -47,7 +47,6 @@ evil_test_gen() ->
 	R1 = yatzy_turn:dice(A),
 	yatzy_turn:stop(A),
 	?assertEqual(K--R1, []).
-% 	yatzy_turn:stop(A).
 
 % dice_test() ->
 % 	A = yatzy_turn:start(),
