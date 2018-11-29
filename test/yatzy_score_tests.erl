@@ -1,6 +1,6 @@
 -module(yatzy_score_tests).
 
--compile(export_all).
+% -compile(export_all).
 
 -include_lib("eunit/include/eunit.hrl").
 
