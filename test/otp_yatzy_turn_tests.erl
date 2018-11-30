@@ -2,6 +2,7 @@
 
 -compile(export_all).
 
+
 -include_lib("eunit/include/eunit.hrl").
 
 roll_valid_test() ->
