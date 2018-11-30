@@ -1,13 +1,13 @@
 -module(yatzy_game).
 
--export([new/1]).
+% -export([new/1]).
 
-new(Players) ->
-    .
+% new(Players) ->
+%     .
 
-begin(Players) ->
-    .
+% begin(Players) ->
+%     .
 
-new_turn(Players) ->
-    .
+% new_turn(Players) ->
+%     .
 
