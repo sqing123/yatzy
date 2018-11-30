@@ -9,7 +9,7 @@
 
 %% API
 -export([start_link/0]).
--export([new_player/1]).
+-export([new_player/1, new_turn/1]).
 
 %% Supervisor callbacks
 -export([init/1]).
@@ -24,7 +24,10 @@ start_link() ->
     supervisor:start_link({local, ?SERVER}, ?MODULE, []).
 
 new_player(Name) ->
-    supervisor:start_child(?MODULE, {Name, {otp_yatzy_player, start_link, [Name]}, permanent, 2000, worker, [otp_yatzy_player]}).
+    supervisor:start_child(?SERVER, {Name, {otp_yatzy_player, start_link, [Name]}, permanent, 2000, worker, [otp_yatzy_player]}).
+
+new_turn(Name) ->
+    supervisor:start_child(?SERVER, {Name, {otp_yatzy_turn, start_link, []}, permanent, 2000, worker, [otp_yatzy_turn]}).
 
 %%====================================================================
 %% Supervisor callbacks

@@ -1,10 +1,10 @@
 -module(otp_yatzy_turn).
 
--export([start/0, roll/2, dice/1, stop/1]).
+-export([start_link/0, roll/2, dice/1, stop/1]).
 -export([init/1, callback_mode/0, terminate/3, code_change/4]).
 -export([first_roll/3, second_roll/3, third_roll/3]).
 
--spec start() -> {ok, pid()}.
+-spec start_link() -> {ok, pid()}.
 
 -behaviour(gen_statem).
 
@@ -18,8 +18,8 @@
 -spec stop(TurnPid::pid()) -> yatzy_score:roll().
 %% Just stop the procees and get out what was rolled.
 
-start() ->
-    gen_statem:start(?MODULE, [], []).
+start_link() ->
+    gen_statem:start_link(?MODULE, [], []).
 
 
 roll(TurnPid, Keep) ->

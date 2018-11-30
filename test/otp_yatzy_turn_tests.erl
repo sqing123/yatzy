@@ -6,7 +6,7 @@
 -include_lib("eunit/include/eunit.hrl").
 
 roll_valid_test() ->
-	{_, A} = otp_yatzy_turn:start(),
+	{_, A} = otp_yatzy_turn:start_link(),
 	R = otp_yatzy_turn:dice(A),
 	K = lists:sublist(R, 1, 4),
 	?assertEqual(ok, otp_yatzy_turn:roll(A, K)),
@@ -19,7 +19,7 @@ roll_valid_test() ->
 	?assertEqual(finished, otp_yatzy_turn:roll(A, [])),
 	?assertEqual(finished, otp_yatzy_turn:roll(A, [])),
 
-	{_, B} = otp_yatzy_turn:start(),
+	{_, B} = otp_yatzy_turn:start_link(),
 	R2 = otp_yatzy_turn:dice(B),
 	K2 = lists:sublist(R2, 1, 5),
 
@@ -41,7 +41,7 @@ evil_roll_test() ->
 	[evil_test_gen() || _ <- lists:seq(1, 100)].
 
 evil_test_gen() ->
-	{_, A} = otp_yatzy_turn:start(),
+	{_, A} = otp_yatzy_turn:start_link(),
 	R = otp_yatzy_turn:dice(A),
 	K = lists:sublist(R, 1, 4),
 	otp_yatzy_turn:roll(A, K),
@@ -50,9 +50,9 @@ evil_test_gen() ->
 	?assertEqual(K--R1, []).
 
 % dice_test() ->
-% 	A = otp_yatzy_turn:start(),
+% 	A = otp_yatzy_turn:start_link(),
 % 	otp_yatzy_turn:stop(A).
 
 % stop_test() ->
-% 	A = otp_yatzy_turn:start(),
+% 	A = otp_yatzy_turn:start_link(),
 % 	otp_yatzy_turn:stop(A).
